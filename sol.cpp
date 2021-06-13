@@ -17,19 +17,19 @@ int main() {
 		// create 'visited' boolean vector to mark the places that were visited
 		vector<bool> visited((int) s.size(), false);
 		for (int i = 0; i < (int) s.size(); i++) {
-			// check if the current character is a question mark ('?') and it's not yet visited
+			// check if the current character is a question mark ('?') and if it's not yet visited
 			if (s[i] == '?' && !visited[i]) {
 				// if yes, then get its palindrome letter equivalent in the string
 				char equivalent = s[(int) s.size() - 1 - i];
-				// check if it's equivalent is a question mark('?') and if it's not yet visited
+				// check if it's equivalent is a question mark('?') and if it's not yet visited as well
 				if (equivalent == '?' && !visited[i]) {
 					// if yes, then multiply 26 to 'sum' (since any letter can be used)
 					sum = (long long) sum * 26 % MOD;
 					// mark the equivalent place of its palindrome equivalent as visited
-					// (to avoid double calculation because they need to be matched)
+					// (to avoid double calculation since they need to be matched)
 					visited[(int) s.size() - 1 - i] = true;
 				} else {
-					// set the question mark to the appropriate letter that it should be
+					// otherwise, set the question mark to the appropriate letter that it should be
 					s[i] = s[(int) s.size() - 1 - i];
 				}
 			}
